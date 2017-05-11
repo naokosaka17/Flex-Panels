@@ -121,7 +121,23 @@
   </div>
 
   <script>
+    const panels = document.querySelectorAll('.panel');
+    // add "open" in class '.panel'
+    function toggleOpen(){
+      this.classList.toggle('open');
+    };
 
+    function toggleActive(e){
+      console.log(e.propertyName);
+      // safari shows "flex", other web browsers shows "flex-grow" so use 'includes' instead of === 'flex-grow'
+      if(e.propertyName.includes('flex')){
+        this.classList.toggle('open-active');
+      }
+    }
+    // click is trigger of function toggleOpen
+    panels.forEach(panel => panel.addEventListener('click',toggleOpen));
+    //click is trigger of function toggleActive
+    panels.forEach(panel => panel.addEventListener('transitionend',toggleActive));
   </script>
 
 
